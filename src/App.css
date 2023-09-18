@@ -11,6 +11,10 @@
   height: var(--tg-viewport-stable-height, 100vh);
 }
 
+.react-ios-time-picker-popup-overlay {
+  pointer-events: none;
+}
+
 body,
 html {
   background: #f8f8f8;
