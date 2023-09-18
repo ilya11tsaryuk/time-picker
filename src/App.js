@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import { TimePicker } from "react-ios-time-picker";
+
 
 function App() {
+  const [value, setValue] = useState("10:00");
+
+  const convertToUTC = (localTime) => {
+    const [hours, minutes] = localTime.split(":").map(Number);
+    const localDate = new Date();
+    localDate.setHours(hours);
+    localDate.setMinutes(minutes);
+
+    const timezoneOffset = localDate.getTimezoneOffset();
+    localDate.setMinutes(localDate.getMinutes() + timezoneOffset);
+
+    return `${localDate.getHours().toString().padStart(2, "0")}:${localDate
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
+  };
+
+  const onCancel = () => {
+    window.Telegram.WebApp.sendData(`-`);
+  };
+
+  const onChange = (timeValue) => {
+    const timeValueUTC = convertToUTC(timeValue);
+    setValue(timeValue);
+    window.Telegram.WebApp.sendData(`${timeValue}|${timeValueUTC}`);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <TimePicker
+        inputClassName="iinnnpuuut"
+        isOpen={true}
+        onCancel={onCancel}
+        onChange={onChange}
+        value={value}
+      />
     </div>
   );
 }
