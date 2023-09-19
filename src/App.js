@@ -62,7 +62,7 @@ function App() {
   };
 
   const onCancel = () => {
-    window.Telegram.WebApp.sendData(`-`);
+    window.Telegram.WebApp.close();
   };
 
   const onSave = (timeValue) => {
