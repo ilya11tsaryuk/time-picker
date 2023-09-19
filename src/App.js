@@ -3,7 +3,7 @@ import { useState } from "react";
 import { convertToUTC } from "./secondaryFn";
 
 function App() {
-  const [time, setTime] = useState("time");
+  const [time, setTime] = useState("10:00");
   const [error, setError] = useState("");
   const [isError, setIsError] = useState(false);
   const maxHours = 23;
@@ -14,7 +14,7 @@ function App() {
   };
 
   const handleInputFocus = (e) => {
-    if (e.target.value === "time") {
+    if (e.target.value === "10:00") {
       e.target.value = "";
     }
   };
@@ -40,7 +40,7 @@ function App() {
       if (hours > maxHours || minutes > maxMinutes) {
         setIsError(true);
         setError(
-          `Часы не могут быть больше ${maxHours}, а минуты не могут быть больше ${maxMinutes}! Попробуйте еще раз.`
+          `Не правильный формат времени. Укажите время в формате ЧЧ:ММ`
         );
       } else {
         setIsError(false);
@@ -81,10 +81,10 @@ function App() {
       )}
       <div className="button-container">
         <button onClick={onCancel} className="button">
-          cancel
+          Отменить
         </button>
         <button onClick={() => onSave(time)} className="button">
-          ok
+          Сохранить
         </button>
       </div>
     </div>
