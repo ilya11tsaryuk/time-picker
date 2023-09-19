@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/time-picker/static/css/main.0c058260.css",
-    "main.js": "/time-picker/static/js/main.e21fdf3b.js",
+    "main.js": "/time-picker/static/js/main.32c72b8a.js",
     "index.html": "/time-picker/index.html",
     "main.0c058260.css.map": "/time-picker/static/css/main.0c058260.css.map",
-    "main.e21fdf3b.js.map": "/time-picker/static/js/main.e21fdf3b.js.map"
+    "main.32c72b8a.js.map": "/time-picker/static/js/main.32c72b8a.js.map"
   },
   "entrypoints": [
     "static/css/main.0c058260.css",
-    "static/js/main.e21fdf3b.js"
+    "static/js/main.32c72b8a.js"
   ]
 }
