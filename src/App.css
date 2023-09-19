@@ -7,7 +7,7 @@
 input {
   box-sizing: border-box;
   text-align: center;
-  background-color: rgba(96, 108, 110, 0.15) !important;
+  background-color: #e7e9e9ff !important;
   height: 40px;
   color: #606c6e;
   font-size: 30px;
@@ -43,7 +43,7 @@ body {
 
 .button {
   color: #4e5556;
-  background-color: rgba(96, 108, 110, 0.15);
+  background-color: #e7e9e9ff;
   border: transparent;
   border-radius: 4px;
   padding: 7px 10px;

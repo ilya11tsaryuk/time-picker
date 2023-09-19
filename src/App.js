@@ -16,7 +16,7 @@ function App() {
 
     if (!tempInput.type === "time") {
       setInputType("text");
-    } 
+    }
   }, []);
 
   const validInput = (val) => {
@@ -80,6 +80,7 @@ function App() {
     <div className="container">
       <h3>⏳</h3>
       <input
+        step={600}
         type={inputType}
         value={time}
         onFocus={handleInputFocus}
