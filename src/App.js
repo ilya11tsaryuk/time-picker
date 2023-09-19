@@ -1,21 +1,33 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { convertToUTC } from "./secondaryFn";
 
 function App() {
   const [time, setTime] = useState("10:00");
   const [error, setError] = useState("");
   const [isError, setIsError] = useState(false);
+  const [inputType, setInputType] = useState("time");
   const maxHours = 23;
   const maxMinutes = 59;
+
+  useEffect(() => {
+    const tempInput = document.createElement("input");
+    tempInput.setAttribute("type", "time");
+
+    if (!tempInput.type === "time") {
+      setInputType("text");
+    } 
+  }, []);
 
   const validInput = (val) => {
     return val.replace(/[^0-9]+/g, "");
   };
 
   const handleInputFocus = (e) => {
-    if (e.target.value === "10:00") {
-      e.target.value = "";
+    if (inputType === "text") {
+      if (e.target.value === "10:00") {
+        e.target.value = "";
+      }
     }
   };
 
@@ -39,9 +51,7 @@ function App() {
       const [hours, minutes] = formattedValue.split(":").map(Number);
       if (hours > maxHours || minutes > maxMinutes) {
         setIsError(true);
-        setError(
-          `Не правильный формат времени. Укажите время в формате ЧЧ:ММ`
-        );
+        setError(`Не правильный формат времени. Укажите время в формате ЧЧ:ММ`);
       } else {
         setIsError(false);
         setError("");
@@ -58,7 +68,7 @@ function App() {
   const onSave = (timeValue) => {
     if (isError) {
       return alert("Не валидные данные");
-    } 
+    }
     if (time.length < 5) {
       return alert("Нужно указать время в формате ЧЧ:ММ");
     }
@@ -70,6 +80,7 @@ function App() {
     <div className="container">
       <h3>⏳</h3>
       <input
+        type={inputType}
         value={time}
         onFocus={handleInputFocus}
         onChange={handleInputChange}
